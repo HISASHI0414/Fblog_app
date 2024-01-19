@@ -3,15 +3,25 @@
   <head>
     <title>FblogApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <p>レイアウトだよ</p>
+    <header class="header">
+      <p class="header_pageTitle">新着記事</p>
+      <div class="dropdown">
+        <%= image_tag "default-avatar.png", class: "header_avatar dropbtn" %>
+        <div class="dropdpwn-content">
+          <a href="#">プロフィール</a>
+          <a href="#">ログアウト</a>
+        </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
