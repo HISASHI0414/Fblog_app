@@ -1,0 +1,16 @@
+<div class="article">
+  <h1 class="article_title"><%= @articles.title %></h1>
+  <div class="article_detail">
+    <%= image_tag 'default-avatar.png' %>
+    <div>
+      <p>cohki0305</p>
+      <p>2020/4/16</p>
+    </div>
+  </div>
+  <div class="article_content">
+    <%= @articles.content %>
+  </div>
+  <div class="article_heart">
+    <%= image_tag 'heart.svg' %>
+  </div>
+</div>
