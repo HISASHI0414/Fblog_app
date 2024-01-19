@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get '/' => 'home#index'
+  root to: 'home#index'
+  get '/about' => 'home#about'
 end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
