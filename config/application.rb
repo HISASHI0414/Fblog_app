@@ -23,5 +23,7 @@ module FblogApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    config.i18n.default_locale = :ja #エラーメッセージを含むRubyの環境を日本語にする（変更内容はconfig/locales/ja.yml内で規定する)
   end
 end
