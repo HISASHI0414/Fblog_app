@@ -9,6 +9,7 @@
 
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -22,6 +23,13 @@
         </div>
       </div>
     </header>
+    <% if flash.present? %>
+      <div class="flash">
+        <% flash.each do |key, value| %>
+          <div class="<%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
