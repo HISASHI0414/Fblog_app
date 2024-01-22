@@ -25,6 +25,7 @@ class Article < ApplicationRecord
   validate :validate_title_and_content_length
 
   belongs_to :user #userモデル（user.rb）のことを指す。記事ごとに該当するUserは一人のため単数系で表記
+  has_many :comments, dependent: :destroy #１つに記事に対してコメントは複数あるため複数形で記述。Articleが消えると紐づくコメントが消去（Destroy）
 
   def display_created_at
     I18n.l(self.created_at, format: :default)
