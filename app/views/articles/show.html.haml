@@ -1,18 +1,19 @@
-.article
-  %h1.article_title= @article.title
-  .article_detail
-    = image_tag 'default-avatar.png'
-    %div
-      %p cohki0305
-      %p= @article.display_created_at
-  - if user_signed_in?
-    .article_detail_actions
-      .dropdown
-        = image_tag 'actions.svg', class: 'dropbtn'
-        .dropdown-content.mini
-          = link_to "編集する", edit_article_path(@article)
-          = link_to "削除する", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "本当に削除してもよろしいですか？"}
-  .article_content
-    = @article.content
-  .article_heart
-    = image_tag 'heart.svg'
+.container
+  .article
+    %h1.article_title= @article.title
+    .article_detail
+      = image_tag 'default-avatar.png'
+      %div
+        %p= @article.user.display_name
+        %p= @article.display_created_at
+    - if user_signed_in? && current_user.has_writtern?(@article)
+      .article_detail_actions
+        .dropdown
+          = image_tag 'actions.svg', class: 'dropbtn'
+          .dropdown-content.mini
+            = link_to "編集する", edit_article_path(@article)
+            = link_to "削除する", article_path(@article), data: { turbo_method: :delete, turbo_confirm: "本当に削除してもよろしいですか？"}
+    .article_content
+      = @article.content
+    .article_heart
+      = image_tag 'heart.svg'
