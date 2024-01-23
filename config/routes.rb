@@ -3,11 +3,14 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments, only: [:new, :create]
+    resource :like, only: [:create, :destroy]
   end
 
   devise_for :users
 
   resource :profile, only: [:show, :edit, :update]
+
+  resources :favorites, only: [:index]
 end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
