@@ -22,16 +22,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #articleモデル（article.rb）のことを指す。userあたり複数記事があるため複数形で表記。Userが消えると紐づく記事が消去（Destroy）
+  #articlesモデル（article.rb）のことを指す。userあたり複数記事があるため複数形で表記。Userが消えると紐づく記事が消去（Destroy）
   has_many :articles, dependent: :destroy
 
   #１つにUserに対してプロフィールは一つのため単数形で記述。Userが消えると紐づくプロフィールが消去（Destroy）
   has_one :profile, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :favorite_articles, through: :likes, source: :article
 
   delegate :age, :gender, to: :profile, allow_nil: true
 
   def has_writtern?(article)
     articles.exists?(id: article.id)
+  end
+
+  def has_liked?(article)
+    likes.exists?(article_id: article.id)
   end
 
   def display_name
