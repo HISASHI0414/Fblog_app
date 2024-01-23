@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:show]
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy] #ログインした人しかできない
 
     def index
         @articles = Article.all
@@ -12,7 +13,7 @@ class ArticlesController < ApplicationController
     def new
         @article = current_user.articles.build
     end
-    
+
     def create
         @article = current_user.articles.build(article_params)
         if @article.save
