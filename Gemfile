@@ -9,7 +9,7 @@ gem "rails", "~> 7.1.3"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem "pg", ">= 0.18", "<2.0"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -41,6 +41,7 @@ gem 'annotate'
 gem "better_errors"
 gem "binding_of_caller"
 gem "devise"
+gem "aws-sdk-s3", require: false
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -59,6 +60,7 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem 'rspec-rails', require: false
   gem 'rubocop-performance', require: false
+  gem 'dotenv-rails'
 end
 
 group :development do
